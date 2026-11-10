@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CopelecApp")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e1426782c9e3066b0a1fa447683719c65b1fc043")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3971092679d019654d85035635c904fc8cf1eb55")]
 [assembly: System.Reflection.AssemblyProductAttribute("CopelecApp")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CopelecApp")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

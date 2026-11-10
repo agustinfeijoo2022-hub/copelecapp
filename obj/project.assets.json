@@ -2,6 +2,15 @@
   "version": 4,
   "targets": {
     "net10.0-windows": {
+      "BCrypt.Net-Next/4.2.0": {
+        "type": "package",
+        "compile": {
+          "lib/net10.0/BCrypt-Net-Next.dll": {}
+        },
+        "runtime": {
+          "lib/net10.0/BCrypt-Net-Next.dll": {}
+        }
+      },
       "BouncyCastle.Cryptography/2.6.2": {
         "type": "package",
         "compile": {
@@ -124,6 +133,31 @@
     }
   },
   "libraries": {
+    "BCrypt.Net-Next/4.2.0": {
+      "sha512": "gwLD2KfCuwQesP17aVh4h6lpiMPEVt5Lbpndo0ej903hNUUTtyxt3ARdDjmuydBRTAUICc7OVKVbaOvc6SQYXA==",
+      "type": "package",
+      "path": "bcrypt.net-next/4.2.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "bcrypt.net-next.4.2.0.nupkg.sha512",
+        "bcrypt.net-next.nuspec",
+        "ico.png",
+        "lib/net10.0/BCrypt-Net-Next.dll",
+        "lib/net10.0/BCrypt.Net-Next.xml",
+        "lib/net462/BCrypt-Net-Next.dll",
+        "lib/net462/BCrypt.Net-Next.xml",
+        "lib/net472/BCrypt-Net-Next.dll",
+        "lib/net472/BCrypt.Net-Next.xml",
+        "lib/net48/BCrypt-Net-Next.dll",
+        "lib/net48/BCrypt.Net-Next.xml",
+        "lib/netstandard2.0/BCrypt-Net-Next.dll",
+        "lib/netstandard2.0/BCrypt.Net-Next.xml",
+        "lib/netstandard2.1/BCrypt-Net-Next.dll",
+        "lib/netstandard2.1/BCrypt.Net-Next.xml",
+        "readme.md"
+      ]
+    },
     "BouncyCastle.Cryptography/2.6.2": {
       "sha512": "7oWOcvnntmMKNzDLsdxAYqApt+AjpRpP2CShjMfIa3umZ42UQMvH0tl1qAliYPNYO6vTdcGMqnRrCPmsfzTI1w==",
       "type": "package",
@@ -288,6 +322,7 @@
   },
   "projectFileDependencyGroups": {
     "net10.0-windows": [
+      "BCrypt.Net-Next >= 4.2.0",
       "MySql.Data >= 26.7.0"
     ]
   },
@@ -297,11 +332,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "c:\\Users\\agust\\OneDrive\\Documentos\\CopelecApp\\CopelecApp\\copelecapp\\CopelecApp.csproj",
+      "projectUniqueName": "C:\\Users\\agust\\OneDrive\\Documentos\\CopelecApp\\CopelecApp\\copelecapp\\CopelecApp.csproj",
       "projectName": "CopelecApp",
-      "projectPath": "c:\\Users\\agust\\OneDrive\\Documentos\\CopelecApp\\CopelecApp\\copelecapp\\CopelecApp.csproj",
+      "projectPath": "C:\\Users\\agust\\OneDrive\\Documentos\\CopelecApp\\CopelecApp\\copelecapp\\CopelecApp.csproj",
       "packagesPath": "C:\\Users\\agust\\.nuget\\packages\\",
-      "outputPath": "c:\\Users\\agust\\OneDrive\\Documentos\\CopelecApp\\CopelecApp\\copelecapp\\obj\\",
+      "outputPath": "C:\\Users\\agust\\OneDrive\\Documentos\\CopelecApp\\CopelecApp\\copelecapp\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\agust\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -336,6 +371,10 @@
         "framework": "net10.0-windows7.0",
         "targetAlias": "net10.0-windows",
         "dependencies": {
+          "BCrypt.Net-Next": {
+            "target": "Package",
+            "version": "[4.2.0, )"
+          },
           "MySql.Data": {
             "target": "Package",
             "version": "[26.7.0, )"
