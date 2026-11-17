@@ -25,10 +25,10 @@ namespace CopelecApp
         private void InitializeCustomComponents()
         {
             this.Text = "Login - COPELEC";
-            // Reduje un poco la altura porque ya no está el botón de registro
-            this.Size = new Size(400, 480); 
+            // Ventana más grande y proporcionada
+            this.Size = new Size(450, 550); 
             this.StartPosition = FormStartPosition.CenterScreen;
-            this.BackColor = Color.FromArgb(245, 245, 245); 
+            this.BackColor = Color.White; // Fondo blanco para un look más limpio
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
 
@@ -36,64 +36,78 @@ namespace CopelecApp
             timerExito.Interval = 1500; 
             timerExito.Tick += TimerExito_Tick;
 
+            // CABECERA MÁS ALTA
             header = new Panel();
             header.BackColor = colorActual; 
             header.Dock = DockStyle.Top;
-            header.Height = 110;
+            header.Height = 160; // Más alta para que respire el logo
             this.Controls.Add(header);
 
+            // LOGO CENTRADO
             Label lblLogo = new Label();
             lblLogo.Text = "⚡ COPELEC"; 
             lblLogo.ForeColor = Color.White;
-            lblLogo.Font = new Font("Arial Black", 20, FontStyle.Bold);
-            lblLogo.Location = new Point(85, 25);
+            lblLogo.Font = new Font("Arial Black", 24, FontStyle.Bold);
             lblLogo.AutoSize = true;
-            header.Controls.Add(lblLogo);
-
+            
             Label lblSubtituloLogo = new Label();
             lblSubtituloLogo.Text = "Eléctrica";
             lblSubtituloLogo.ForeColor = Color.White;
-            lblSubtituloLogo.Font = new Font("Arial", 10, FontStyle.Regular);
-            lblSubtituloLogo.Location = new Point(170, 65);
+            lblSubtituloLogo.Font = new Font("Arial", 12, FontStyle.Regular);
             lblSubtituloLogo.AutoSize = true;
-            header.Controls.Add(lblSubtituloLogo);
 
+            // Centrado manual en el header
+            header.Controls.Add(lblLogo);
+            header.Controls.Add(lblSubtituloLogo);
+            
+            // Centramos al momento de cargar
+            this.Load += (s, e) => {
+                lblLogo.Location = new Point((header.Width - lblLogo.Width) / 2, 40);
+                lblSubtituloLogo.Location = new Point((header.Width - lblSubtituloLogo.Width) / 2, 90);
+            };
+
+            // ==========================================
+            // CONTROLES DEL FORMULARIO
+            // ==========================================
             lblCorreo = new Label();
             lblCorreo.Text = "Correo:";
-            lblCorreo.Location = new Point(50, 140);
+            lblCorreo.Location = new Point(50, 200);
             lblCorreo.AutoSize = true;
-            lblCorreo.Font = new Font("Segoe UI", 10, FontStyle.Bold);
+            lblCorreo.Font = new Font("Segoe UI", 11, FontStyle.Bold);
+            lblCorreo.ForeColor = Color.FromArgb(64, 64, 64);
             this.Controls.Add(lblCorreo);
 
             txtCorreo = new TextBox();
-            txtCorreo.Location = new Point(50, 165);
-            txtCorreo.Size = new Size(280, 25);
-            txtCorreo.Font = new Font("Segoe UI", 10);
+            txtCorreo.Location = new Point(50, 225);
+            txtCorreo.Size = new Size(340, 30);
+            txtCorreo.Font = new Font("Segoe UI", 12);
             this.Controls.Add(txtCorreo);
 
             lblContrasena = new Label();
             lblContrasena.Text = "Contraseña:";
-            lblContrasena.Location = new Point(50, 210);
+            lblContrasena.Location = new Point(50, 275);
             lblContrasena.AutoSize = true;
-            lblContrasena.Font = new Font("Segoe UI", 10, FontStyle.Bold);
+            lblContrasena.Font = new Font("Segoe UI", 11, FontStyle.Bold);
+            lblContrasena.ForeColor = Color.FromArgb(64, 64, 64);
             this.Controls.Add(lblContrasena);
 
             txtContrasena = new TextBox();
-            txtContrasena.Location = new Point(50, 235);
-            txtContrasena.Size = new Size(280, 25);
-            txtContrasena.Font = new Font("Segoe UI", 10);
+            txtContrasena.Location = new Point(50, 300);
+            txtContrasena.Size = new Size(340, 30);
+            txtContrasena.Font = new Font("Segoe UI", 12);
             txtContrasena.PasswordChar = '*';
             this.Controls.Add(txtContrasena);
 
+            // BOTÓN MÁS GRANDE
             btnIngresar = new Button();
             btnIngresar.Text = "Ingresar";
-            btnIngresar.Location = new Point(50, 290);
-            btnIngresar.Size = new Size(280, 40);
+            btnIngresar.Location = new Point(50, 360);
+            btnIngresar.Size = new Size(340, 50);
             btnIngresar.FlatStyle = FlatStyle.Flat;
             btnIngresar.FlatAppearance.BorderSize = 0;
             btnIngresar.BackColor = colorActual; 
             btnIngresar.ForeColor = Color.White;
-            btnIngresar.Font = new Font("Segoe UI", 11, FontStyle.Bold);
+            btnIngresar.Font = new Font("Segoe UI", 14, FontStyle.Bold);
             btnIngresar.Cursor = Cursors.Hand;
             btnIngresar.Click += new EventHandler(this.btnIngresar_Click);
             
@@ -102,13 +116,13 @@ namespace CopelecApp
             
             this.Controls.Add(btnIngresar);
 
+            // ETIQUETA DE ERROR
             lblError = new Label();
-            // Lo subimos un poco para que quede bien centrado
-            lblError.Location = new Point(50, 345); 
-            lblError.Size = new Size(280, 35);
+            lblError.Location = new Point(50, 425); 
+            lblError.Size = new Size(340, 40);
             lblError.TextAlign = ContentAlignment.MiddleCenter;
             lblError.ForeColor = Color.White; 
-            lblError.Font = new Font("Segoe UI", 9, FontStyle.Bold);
+            lblError.Font = new Font("Segoe UI", 10, FontStyle.Bold);
             lblError.Visible = false; 
             this.Controls.Add(lblError);
         }
@@ -140,7 +154,6 @@ namespace CopelecApp
 
                                 bool passwordCorrecta = false;
 
-                                // MODO TRANSICIÓN (Acepta Hash o Texto Plano)
                                 if (passGuardada.StartsWith("$2a$") || passGuardada.StartsWith("$2b$") || passGuardada.StartsWith("$2y$"))
                                 {
                                     if (BCrypt.Net.BCrypt.Verify(txtContrasena.Text, passGuardada))
